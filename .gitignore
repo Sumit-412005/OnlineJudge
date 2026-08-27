@@ -1,0 +1,14 @@
+node_modules
+BACKEND/node_modules/
+frontend/node_modules/
+.env
+BACKEND/.env
+frontend/.env
+.vscode
+keys
+
+# Runtime-generated directories for code execution
+BACKEND/codes/
+BACKEND/outputs/
+BACKEND/testcases/
+frontend/build/
