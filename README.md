@@ -1,4 +1,4 @@
-# 🖥️ Online Judge Platform (Full Stack Application Made By Yash Choudhary)
+# 🖥️ Online Judge Platform (Full Stack Application Made By Sumit Singha Roy)
 
 An online judge platform hosting coding problems and challenges. Users solve a series of coding problems. First he has to begin with registration for his account, user can register as admin or user(member). During problem solving, they submit their solutions through the platform. Once submitted, these solutions are evaluated against hidden test cases by the platform. Based on the results of these tests, user solution submission is assigned verdict. The platform provides the infrastructure to manage and execute the DSA coding problems, ensuring fair and impartial evaluation.
 
@@ -59,70 +59,3 @@ An online judge platform hosting coding problems and challenges. Users solve a s
 ## 🌐 Future Scope
 
 - **AI-Based RAG Model**: Assist users with an AI-based model that embeds problems and user solutions. Using an LLM model, generate natural language responses to help users learn better and solve problems more efficiently.
-
-
-## 🎨 Platform Visuals
-
-### Different Dashboards for multiple roles 
-<div align="center">
-  <table>
-    <tr>
-    <th align="center">User Dashboard</th>
-      </tr>
-    <tr>
-      <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/Homepage.png" alt="Landing page" style="width: 300px;"/>
-        <br />
-        <em>Homepage</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/LoginPage.png" style="width: 300px;"/>
-        <br />
-        <em>LoginPage</em>
-      </td>
-    </tr>
-  </table>
-</div>
-
-<div align="center">
-  <table>
-   <tr>
-     <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/SingupPage.png" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Signup Page</em>
-      </td>
-      <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/UserDashboard.png" style="width: 300px;"/>
-        <br />
-        <em>User Dashboard</em>
-      </td>
-    </tr>
-    <tr>
-           <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/SolveProblemPage.png" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Solve Problem</em>
-      </td>
-          </td>
-           <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/AdminCrud.png" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Admin Dashboard</em>
-      </td>
-    </tr>
-    <tr>
-           <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/CreateProblemPage.png" alt="Landing register" style="width: 300px;"/>
-        <br />
-        <em>Create Problem</em>
-      </td>
-          </td>
-           <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/Edit.CreateProblem.png" style="width: 300px;"/>
-        <br />
-        <em>Edit Problem</em>
-      </td>
-    </tr>
-  </table>
-</div>
