@@ -111,14 +111,23 @@ const submitSolution = async (req, res) => {
                     break;
                 }
             } catch (error) {
-                finalVerdict = "Incorrect Code";
+                const errorType = error.type || "Runtime Error";
+                const errorMessage =
+                    error.message ||
+                    error.stderr ||
+                    error.error ||
+                    "An error occurred while executing the code.";
+
+                finalVerdict = errorType;
                 failedTestCase = index + 1;
+
                 results.push({
                     input,
                     expectedOutput: output,
-                    actualOutput: error.error || error.stderr || error.message || "Error",
-                    verdict: "Incorrect Code",
+                    actualOutput: errorMessage,
+                    verdict: errorType,
                 });
+
                 break;
             } finally {
                 if (fs.existsSync(inputFilePath)) {

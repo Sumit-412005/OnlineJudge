@@ -1,9 +1,8 @@
-// executeJava.js
 const fs = require("fs");
 const path = require("path");
 const { exec } = require("child_process");
 
-const outputPath = path.join(__dirname, '../outputs');
+const outputPath = path.join(__dirname, "../outputs");
 
 if (!fs.existsSync(outputPath)) {
     fs.mkdirSync(outputPath, { recursive: true });
@@ -11,20 +10,59 @@ if (!fs.existsSync(outputPath)) {
 
 const executeJava = (filePath, inputFilePath, timeout = 10000) => {
     const dir = path.dirname(filePath);
-    const filename = path.basename(filePath);
+    const className = path.basename(filePath, ".java");
 
     return new Promise((resolve, reject) => {
-        const command = `javac "${filePath}" && java -cp "${dir}" ${filename.replace('.java', '')} < "${inputFilePath}"`;
-        console.log("Executing command:", command);
-        exec(command, { timeout }, (error, stdout, stderr) => {
-            // Only a compile/runtime failure or timeout (which sets `error`) counts as a failure;
-            // stderr alone (e.g. warnings) is not treated as an error.
-            if (error) {
-                console.error("Error:", error.message);
-                return reject({ error: error.message, stderr });
+
+        // Step 1: Compile the Java program
+        const compileCommand = `javac "${filePath}"`;
+
+        exec(compileCommand, { timeout }, (compileError, stdout, stderr) => {
+
+            if (compileError) {
+                return reject({
+                    type: "Compilation Error",
+                    message: stderr || compileError.message,
+                });
             }
-            console.log("Execution result:", stdout);
-            resolve(stdout);
+
+            // Step 2: Execute the compiled Java program
+            const runCommand =
+                `java -cp "${dir}" ${className} < "${inputFilePath}"`;
+
+            exec(runCommand, { timeout }, (runtimeError, stdout, stderr) => {
+
+                if (runtimeError) {
+                    if (runtimeError.killed) {
+                        return reject({
+                            type: "Time Limit Exceeded",
+                            message: "Program exceeded the execution time limit.",
+                        });
+                    }
+
+                    let runtimeMessage = stderr?.trim();
+
+                    if (!runtimeMessage && runtimeError.signal) {
+                        runtimeMessage = `Process terminated by ${runtimeError.signal}.`;
+                    }
+
+                    if (!runtimeMessage && runtimeError.code !== undefined) {
+                        runtimeMessage = `Process exited with code ${runtimeError.code}.`;
+                    }
+
+                    if (!runtimeMessage) {
+                        runtimeMessage =
+                            "Program terminated unexpectedly during execution.";
+                    }
+
+                    return reject({
+                        type: "Runtime Error",
+                        message: runtimeMessage,
+                    });
+                }
+
+                resolve(stdout);
+            });
         });
     });
 };
