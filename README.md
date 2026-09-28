@@ -1,3 +1,7 @@
+## Live Demo
+
+http://13.233.199.13:3000
+
 # 🖥️ Online Judge Platform (Full Stack Application Made By Sumit Singha Roy)
 
 An online judge platform hosting coding problems and challenges. Users solve a series of coding problems. First he has to begin with registration for his account, user can register as admin or user(member). During problem solving, they submit their solutions through the platform. Once submitted, these solutions are evaluated against hidden test cases by the platform. Based on the results of these tests, user solution submission is assigned verdict. The platform provides the infrastructure to manage and execute the DSA coding problems, ensuring fair and impartial evaluation.
